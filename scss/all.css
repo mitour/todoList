@@ -1,0 +1,188 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h2, .h2 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.wrap {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+nav, footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: #20cb9a;
+  padding: 1rem 0.5rem;
+  border-bottom: 3px solid transparent;
+}
+
+nav ul li a:hover {
+  border-bottom: 3px solid #20cb9a;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+
+header::before {
+  content: "";
+  background-image: url(https://raw.githubusercontent.com/hexschool/HTMLHWSource/master/singlePage/banner.png);
+  background-size: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+header {
+  position: relative;
+  min-height: 35vh;
+}
+
+.slogan {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+header, main div {
+  margin-bottom: 20px;
+}
+
+.course {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.course-item {
+  margin: 0 10px;
+  padding: 15px;
+  -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 30%;
+}
+
+.item-img {
+  height: 20vh;
+}
+
+.item-img img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.course-item h2 {
+  margin: 5% 0;
+}
+
+.course-item p, .course-item ul {
+  text-align: left;
+  font-size: 16px;
+  line-height: 24px;
+  color: #555;
+}
+
+.course-item ul {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+footer p {
+  line-height: 24px;
+}
+
+footer span {
+  color: #cd5a8a;
+}
+/*# sourceMappingURL=all.css.map */
