@@ -1,0 +1,113 @@
+h2, .h2{
+    font-size: $font_size_m;
+    line-height: $line_height_m;
+}
+
+.wrap {
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+nav ,footer{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav ul{
+	display: flex;
+	height: 100%;
+}
+
+nav ul li a{
+	display: block;
+	text-decoration: none;
+	color: $color-primary;
+	padding: 1rem 0.5rem;
+	border-bottom: 3px solid transparent;
+}
+
+nav ul li a:hover {
+	border-bottom: 3px solid $color-primary;
+	transition: all 0.5s linear;
+}
+
+header::before {
+	content: "";
+	background-image: url(https://raw.githubusercontent.com/hexschool/HTMLHWSource/master/singlePage/banner.png);
+	background-size: cover;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+header {
+	position: relative;
+	min-height: 35vh;
+}
+
+.slogan {
+	position: absolute;
+	top: 50%;
+    transform: translateY(-50%);
+	background: $color_shadow;
+	width: 100%;
+	padding: 10px 20px;
+	color: #fff;
+	font-size: $font_size_l;
+	line-height: $line_height_l;
+}
+
+header, main div {
+	margin-bottom: 20px;
+}
+
+.course {
+	display: flex;
+	justify-content: space-around;
+}
+
+.course-item {
+	margin: 0 10px;
+	padding: 15px;
+	box-shadow: 0px 2px 3px $color_shadow;
+	text-align: center;
+	width: 30%;
+}
+
+.item-img {
+	height: 20vh;
+}
+
+.item-img img {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+
+.course-item h2 {
+	margin: 5% 0;
+}
+
+.course-item p, .course-item ul {
+	text-align: left;
+	font-size: $font_size_s;
+	line-height: $line_height_s;
+	color: #555;
+}
+
+.course-item ul {
+	list-style: disc;
+	list-style-position: inside;
+}
+
+footer p {
+	line-height: $line_height_s;
+}
+
+footer span {
+	color: $color_accent;
+}
