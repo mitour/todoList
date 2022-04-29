@@ -1,0 +1,15 @@
+{
+    "name": "mitourk/web",
+    "autoload": {
+        "psr-4": {
+            "Mitourk\\Web\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mitour",
+            "email": "love2082020@gmail.com"
+        }
+    ],
+    "require": {}
+}
