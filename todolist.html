@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- stylesheet -->
+  <link rel="stylesheet" href="scss/all.css">
+  <link rel="stylesheet" href="scss/todolist.css">
+
+  <!-- google fonts: NOTO Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <title>todolist</title>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="#">
+        <img src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/logo.png?raw=true" alt="navbar logo">
+      </a>
+      <ul>
+        <li><a href="#">王小明的待辦</a></li>
+        <li><a class="logout" href="/index.html">登出</a></li>
+      </ul>
+    </nav>
+    <div class="main">
+      <form action="#">
+        <div class="embed_submit_field">
+          <label for="add">
+            <input id="add" type="text" placeholder="新增待辦事項">
+          </label>
+          <input class="btn_img" type="image" src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/plus%201.png?raw=true" alt="Submit">
+        </div>
+      </form>
+      <div class="list">
+        <ul class="list_header">
+          <li class="actived">全部</li>
+          <li>待完成</li>
+          <li>已完成</li>
+        </ul>
+        <form action="#" class="list_items">
+          <div class="list_item">
+            <input type="checkbox" name="todolist" id="1">
+            <label for="1">把冰箱發霉的檸檬拿去丟</label>
+            <button class="delete"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="list_item">
+            <input class="checked" type="checkbox" name="todolist" id="2">
+            <label for="2">打電話叫媽媽匯款給我</label>
+            <button class="delete"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="list_item">
+            <input type="checkbox" name="todolist" id="3">
+            <label for="3">整理電腦資料夾</label>
+            <button class="delete"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="list_item">
+            <input class="checked" type="checkbox" name="todolist" id="4">
+            <label for="4">繳電費水費瓦斯費</label>
+            <button class="delete"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="list_item">
+            <input type="checkbox" name="todolist" id="5">
+            <label for="5">約vicky禮拜三泡溫泉</label>
+            <button class="delete"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="list_item">
+            <input type="checkbox" name="todolist" id="6">
+            <label for="6">約ada禮拜四吃晚餐</label>
+            <button class="delete"><i class="fas fa-times"></i></button>
+          </div>
+        </form>
+        <div class="list_footer">
+          <span>5 個待完成事項</span>
+          <button class="cancel">清除已完成項目</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
