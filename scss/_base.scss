@@ -1,0 +1,72 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body{
+	background: $color_primary;
+	color: $color_accent;
+	font-family: $font_family;
+}
+
+.wrap {
+    margin: 0 auto;
+}
+
+h1, .h1 {
+	font-size: $font_size_l;
+	line-height: $line_height_l;
+	font-weight: $font_weight_bold;
+	text-align: center;
+}
+
+// form
+
+label {
+	margin-bottom: 12px;
+}
+
+label p, .alert {
+	font-weight: $font_weight_bold;
+	font-size: $font_size_s;
+	line-height: $line_height_s;
+	text-align: left;
+	margin: 4px 0;
+}
+
+label:nth-of-type(2) p {
+	margin-top: 12px;
+}
+
+.alert {
+	color: $color_alert;
+}
+
+input {
+	width: 100%;
+	border: none;
+	border-radius: 10px;
+	padding: 12px 16px;
+	text-align: left;
+	font-size: $font_size_m;
+	line-height: $line_height_m;
+}
+
+.btn {
+	width: inherit;
+	padding: 12px 48px;
+	margin: 24px 0;
+	background: $color_accent;
+	color: #fff;
+	font-weight: $font_weight_bold;
+	font-size: $font_size_m;
+	line-height: $line_height_m;
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	color: $color_accent;
+	font-weight: $font_weight_bold;
+	font-size: $font_size_m;
+	line-height: $line_height_m;
+}
