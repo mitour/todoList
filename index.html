@@ -1,65 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="scss/all.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="scss/all.css">
+
+    <!-- google fonts: NOTO Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <title>todolist</title>
 </head>
 <body>
   <div class="wrap">
-    <nav>
-      <a href="#"><img src="https://raw.githubusercontent.com/hexschool/HTMLHWSource/master/singlePage/logo.png" alt="HexSchool logo"></a>
-      <ul>
-        <li><a href="#">首頁</a></li>
-        <li><a href="#">產品介紹</a></li>
-        <li><a href="#">關於我們</a></li>
-      </ul>
-    </nav>
-    <header>
-      <div class="slogan">
-        <h1>六角學院</h1>
-        <p class="h1">Lorem ipsum dolor sit.</p>
-      </div>
-    </header>
-    <main>
-      <div class="course">
-        <div class="course-item">
-          <div class="item-img">
-          <img src="https://raw.githubusercontent.com/hexschool/HTMLHWSource/master/singlePage/html.png" alt="html"></div>
-          <h2>HTML5 基礎教學</h2>
-          <p>主流前端網站設計的基礎就在六角學院，在這裡不在是填鴨式教學，市是透通實際的範例，瞭解正礁的網站開發流程，講師均具有業界開發經驗，課學員學習業界主流的開發方法。</p>
-        </div>
-        <div class="course-item">
-          <div class="item-img">
-            <img src="https://raw.githubusercontent.com/hexschool/HTMLHWSource/master/singlePage/rwd.png" alt="hexschool"></div>
-          <h2>響應式網站設計</h2>
-          <p>響應式無站設計 (Responsive web desian)，目前大多使用者均是以手機瀏覽的情況下，醬應式網站己經是必備的六角學院將曾提供業界響應式開發方法，讓學牛瞭解行動版開發技巧。</p>
-        </div>
-        <div class="course-item">
-          <div class="item-img">
-          <img src="https://raw.githubusercontent.com/hexschool/HTMLHWSource/master/singlePage/jQuery.png" alt="jQuery"></div>
-          <h2>jQuery 實戰教學</h2>
-          <p>本課程有以下特色</p>
-          <ul>
-            <li>瞭解缕數的使用方法</li>
-            <li>學習並操作 DOM</li>
-            <li>學習其本数學運算方法</li>
-            <li>套件的操作及運用</li>
-          </ul>
-        </div>
-      </div>
-    </main>
-    <footer>
-      <a href="#"><img src="https://raw.githubusercontent.com/hexschool/HTMLHWSource/master/singlePage/footerLogo.png" alt="HexSchool logo"></a>
-      <ul>
-        <li>
-          <p>聯絡我們：<span>example@gmail.com</span></p>
-          <p>電話：<span>070-3345678</span></p>
-        </li>
-      </ul>
-    </footer>
+    <aside class="aside_img">
+      <img class="logo" src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/logo.png?raw=true" alt="logo">
+      <img src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/img.png?raw=true" alt="img">
+    </aside>
+    <article>
+      <form action="#">
+        <legend class="h1">最實用的線上代辦事項服務</legend>
+        <label for="email">
+          <p>Email</p>
+          <input type="email" placeholder="請輸入 Email">
+          <p class="alert">此欄位不可為空</p>
+        </label>
+        <label for="pwd">
+          <p>密碼</p>
+          <input type="password" placeholder="請輸入密碼">
+          <p class="alert"></p>
+        </label>
+        <input class="btn" type="submit" value="登入">
+      </form>
+      <a href="#">註冊帳號</a>
+    </article>
   </div>
 </body>
 </html>
