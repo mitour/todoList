@@ -33,7 +33,7 @@ label p, .alert {
 	margin: 4px 0;
 }
 
-label:nth-of-type(2) p {
+label:not(:first-child) p {
 	margin-top: 12px;
 }
 
