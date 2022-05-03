@@ -1,9 +1,12 @@
 @import "variable";
 
+body {
+  background: linear-gradient(172.7deg, $color_primary 5.12%, $color_primary 53.33%, $color_primary 53.44%, #FFFFFF 53.45%, #FFFFFF 94.32%);
+}
+
 .wrap {
-display: block;
-width: 100%;
-background: linear-gradient(172.7deg, $color_primary 5.12%, $color_primary 53.33%, $color_primary 53.44%, #FFFFFF 53.45%, #FFFFFF 94.32%);
+  display: block;
+  width: 100%;
 }
 
 .main {
@@ -126,4 +129,37 @@ input[type="checkbox"] {
   p{
     margin-bottom: 16px;
   }
+}
+
+@media (max-width: 576px) {
+  body {
+    background: $color_primary;
+  }
+  .wrap, .main {
+    width: 311px;
+  }
+  .delete {
+    opacity: 1;
+  }
+  nav {
+    img {
+      vertical-align: middle;
+      width: 90%;
+      margin: 0;
+    }    
+    ul {
+      display: block;
+      li {
+        margin-right: 0;
+      }
+      a {
+        display: none;
+      }
+      a.logout {
+        display: block;
+        font-size: $font_size_s;
+        line-height: $line-height_s;
+      }
+    }
+  } 
 }

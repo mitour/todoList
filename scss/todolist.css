@@ -1,7 +1,10 @@
+body {
+  background: linear-gradient(172.7deg, #FFD370 5.12%, #FFD370 53.33%, #FFD370 53.44%, #FFFFFF 53.45%, #FFFFFF 94.32%);
+}
+
 .wrap {
   display: block;
   width: 100%;
-  background: linear-gradient(172.7deg, #FFD370 5.12%, #FFD370 53.33%, #FFD370 53.44%, #FFFFFF 53.45%, #FFFFFF 94.32%);
 }
 
 .main {
@@ -143,5 +146,36 @@ input[type="checkbox"]:checked ~ label, input[type="checkbox"].checked ~ label {
 
 .empty p {
   margin-bottom: 16px;
+}
+
+@media (max-width: 576px) {
+  body {
+    background: #FFD370;
+  }
+  .wrap, .main {
+    width: 311px;
+  }
+  .delete {
+    opacity: 1;
+  }
+  nav img {
+    vertical-align: middle;
+    width: 90%;
+    margin: 0;
+  }
+  nav ul {
+    display: block;
+  }
+  nav ul li {
+    margin-right: 0;
+  }
+  nav ul a {
+    display: none;
+  }
+  nav ul a.logout {
+    display: block;
+    font-size: 14px;
+    line-height: 20.27px;
+  }
 }
 /*# sourceMappingURL=todolist.css.map */
