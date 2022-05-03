@@ -189,4 +189,24 @@ article {
 article .h1 {
   margin-bottom: 20px;
 }
+
+@media (max-width: 576px) {
+  .wrap {
+    display: block;
+  }
+  .wrap, aside, article {
+    width: 100%;
+  }
+  .aside_img {
+    display: none;
+  }
+  .logo {
+    width: 100%;
+    margin-top: 48px;
+  }
+  h1, .h1 {
+    font-size: 20px;
+    line-height: 28.96px;
+  }
+}
 /*# sourceMappingURL=all.css.map */
