@@ -7,6 +7,7 @@
 
     <!-- stylesheet -->
     <link rel="stylesheet" href="scss/all.css">
+    <link rel="stylesheet" href="scss/pages/form.css">
 
     <!-- google fonts: NOTO Sans TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,28 +17,31 @@
     <title>todolist</title>
 </head>
 <body>
-  <div class="wrap">
-    <aside>
-      <img class="logo" src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/logo.png?raw=true" alt="logo">
-      <img class="aside_img" src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/img.png?raw=true" alt="img">
-    </aside>
-    <article>
+  <div class="container">
+    <section class="wrap">
+      <h1>
+        <img class="logo" src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/logo_lg.png?raw=true" alt="online todo list">
+      </h1>
+      <img class="aside_img" src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/img.png?raw=true" alt="todo list image">
+    </section>
+    <section class="wrap">
       <form action="/todolist.html">
-        <legend class="h1">最實用的線上代辦事項服務</legend>
-        <label for="email">
-          <p>Email</p>
-          <input id="email" type="email" placeholder="請輸入 Email">
-          <p class="alert">此欄位不可為空</p>
-        </label>
-        <label for="pwd">
-          <p>密碼</p>
-          <input id="pwd" type="password" placeholder="請輸入密碼">
-          <p class="alert"></p>
-        </label>
+        <h2>最實用的線上代辦事項服務</h2>
+        <ul class="list">
+          <li class="list_item">
+            <h3>Email</h3>
+            <input id="email" type="email" placeholder="請輸入 Email">
+            <h3 class="alert">此欄位不可為空</h3>
+          </li>
+          <li class="list_item">
+            <h3>密碼</h3>
+            <input id="pwd" type="password" placeholder="請輸入密碼">
+          </li>
+        </ul>
         <input class="btn" type="submit" value="登入">
       </form>
-      <a href="/register.html">註冊帳號</a>
-    </article>
+      <a class="btn btn_sub" href="/register.html">註冊帳號</a>
+    </section>
   </div>
 </body>
 </html>

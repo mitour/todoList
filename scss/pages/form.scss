@@ -1,0 +1,76 @@
+// windows
+.container {
+	display: flex;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.wrap {
+	width: 50%;
+	padding: 0 10%;
+	text-align: center;
+	// left side wrap
+	&:first-of-type {
+		padding-right: 0;
+	}
+}
+
+// form
+.list{
+	padding: 8px 0;
+}
+
+.list_item {
+  margin-bottom: 12px;
+}
+
+input {
+	margin-bottom: 4px;
+}
+
+h2, .h2,
+h3, .h3 {
+  text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+  	// 2col -> 1col
+	.container {
+    display: block;
+    padding-top: 48px;
+  }
+  
+  .aside_img {
+    display: none;
+  }
+
+  .wrap {
+		width: 100%;
+		padding: 0 32px;
+    // overwrite pr0 when large screen
+    &:first-of-type {
+      padding-right: 32px;
+    }
+	}
+
+
+  h2, .h2 {
+    font-size: 20px;
+		line-height: 28.96px;
+    text-align: center;
+  }
+
+  .list {
+		padding: 12px 0;
+	}
+	
+	// to show all list items in small screen
+	.list-l {
+		padding-top: 10px;
+		padding-bottom: 0;
+	}
+	
+	.list_item {
+		padding-right: 7px;
+	}
+}
