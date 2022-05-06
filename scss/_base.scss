@@ -1,40 +1,62 @@
+// reset
+
+button {
+	padding: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
 *, *::before, *::after {
 	box-sizing: border-box;
+  // outline: 1px solid blue;
 }
 
 body{
 	background: $color_primary;
 	color: $color_accent;
 	font-family: $font_family;
+	font-size: $font_size_m;
+	line-height: $line_height_m;
 }
 
-.wrap {
-    margin: 0 auto;
+.container {
+	max-width: 1028px;
+	margin: 0 auto;
 }
 
+// text
 h1, .h1 {
+	margin-bottom: 20px;
+}
+
+h2, .h2 {
 	font-size: $font_size_l;
 	line-height: $line_height_l;
 	font-weight: $font_weight_bold;
-	text-align: center;
+	margin-top: 24px;
+	margin-bottom: 16px;
 }
 
-// form
-
-label {
-	margin-bottom: 12px;
-}
-
-label p, .alert {
-	font-weight: $font_weight_bold;
+h3, .h3 {
 	font-size: $font_size_s;
 	line-height: $line_height_s;
-	text-align: left;
-	margin: 4px 0;
+	font-weight: $font_weight_bold;
+	margin-bottom: 4px;
 }
 
-label:not(:first-child) p {
-	margin-top: 12px;
+a {
+	text-decoration: none;
+	display: inline-block;
+	&:link, &:active, &:visited {
+    color: $color_accent;
+  }
+}
+
+.bold {
+	font-weight: $font_weight_bold;
 }
 
 .alert {
@@ -46,15 +68,16 @@ input {
 	border: none;
 	border-radius: 10px;
 	padding: 12px 16px;
-	text-align: left;
 	font-size: $font_size_m;
 	line-height: $line_height_m;
 }
 
 .btn {
-	width: inherit;
+	display: inline-block;
+	width: auto; // overwrite input tag settings
 	padding: 12px 48px;
-	margin: 24px 0;
+	margin-bottom: 24px;
+  border-radius: 10px;
 	background: $color_accent;
 	color: #fff;
 	font-weight: $font_weight_bold;
@@ -63,30 +86,7 @@ input {
 	cursor: pointer;
 }
 
-a {
-	text-decoration: none;
-	color: $color_accent;
-	font-weight: $font_weight_bold;
-	font-size: $font_size_m;
-	line-height: $line_height_m;
-}
-
-nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 8px;
-	img{
-		height: 100%;
-		margin: 0 24px;
-	}
-	ul {
-		display: flex;
-	}
-	li {
-		margin: 24px 24px 24px 0;
-	}
-	.logout {
-		font-weight: $font_weight_regular;
-	}
+.btn_sub {
+  background: transparent;
+  color: #000;
 }

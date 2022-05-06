@@ -7,7 +7,7 @@
 
   <!-- stylesheet -->
   <link rel="stylesheet" href="scss/all.css">
-  <link rel="stylesheet" href="scss/todolist.css">
+  <link rel="stylesheet" href="scss/pages/todolist.css">
 
   <!-- google fonts: NOTO Sans TC -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,30 +17,30 @@
   <title>todolist</title>
 </head>
 <body>
-  <div class="wrap">
+  <div class="container">
     <nav>
-      <a href="#">
-        <img src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/logo.png?raw=true" alt="navbar logo">
-      </a>
+      <h1>
+        <a href="#">
+          <img src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/logo.png?raw=true" alt="online todo list">
+        </a>
+      </h1>
       <ul>
-        <li><a href="#">王小明的待辦</a></li>
+        <li><a class="bold" href="#">王小明的待辦</a></li>
         <li><a class="logout" href="/index.html">登出</a></li>
       </ul>
     </nav>
-    <div class="main">
+    <section class="wrap">
       <form action="#">
         <div class="embed_submit_field">
-          <label for="add">
-            <input id="add" type="text" placeholder="新增待辦事項">
-          </label>
+          <input id="add" type="text" placeholder="新增待辦事項">
           <input class="btn_img" type="image" src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/plus%201.png?raw=true" alt="Submit">
         </div>
       </form>
       <div class="empty">
-        <p>目前尚無待辦事項</p>
+        <h2>目前尚無待辦事項</h2>
         <img src="https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/empty%201.png" alt="empty">
       </div>
-    </div>
+    </section>
   </div>
 </body>
 </html>

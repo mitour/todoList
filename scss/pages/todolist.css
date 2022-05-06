@@ -1,13 +1,45 @@
 body {
-  background: linear-gradient(172.7deg, #FFD370 5.12%, #FFD370 53.33%, #FFD370 53.44%, #FFFFFF 53.45%, #FFFFFF 94.32%);
+  background: linear-gradient(172.7deg, #FFD370 5.12%, #FFD370 53.33%, #FFD370 53.44%, #FFFFFF 53.45%, #FFFFFF 94.32%) no-repeat;
+}
+
+.container {
+  padding-bottom: 36px;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  margin-bottom: 24px;
+}
+
+nav h1, nav .h1 {
+  margin-bottom: 0;
+  padding: 0 12px;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+nav li a {
+  padding: 24px 12px;
+}
+
+nav .logout {
+  font-weight: 400;
 }
 
 .wrap {
-  display: block;
-  width: 100%;
-}
-
-.main {
   margin: 0 auto;
   width: 500px;
 }
@@ -17,7 +49,6 @@ body {
   border-radius: 10px;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  margin: 16px 0;
 }
 
 .embed_submit_field .btn_img {
@@ -34,7 +65,10 @@ body {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   background: #fff;
-  padding-bottom: 8px;
+  margin-top: 16px;
+  padding-bottom: 7px;
+  font-size: 14px;
+  line-height: 20.27px;
 }
 
 .list_header {
@@ -43,6 +77,7 @@ body {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  font-weight: 700;
 }
 
 .list_header li {
@@ -56,16 +91,19 @@ body {
   border-bottom: 2px solid #333333;
 }
 
-.list_items .list_item {
-  position: relative;
-  padding: 24px 0 15px;
-  margin-left: 24px;
-  margin-right: 48px;
-  border-bottom: 1px solid #E5E5E5;
+.list_items, .list_footer {
+  padding-left: 24px;
+  padding-right: 48px;
 }
 
-.list_items .list_item:not(:first-child) {
-  padding-top: 15px;
+.list_items {
+  margin: 6px 0;
+}
+
+.list_items .list_item {
+  position: relative;
+  padding: 17px 0 15px;
+  border-bottom: 1px solid #E5E5E5;
 }
 
 .list_items .list_item:hover .delete {
@@ -76,11 +114,21 @@ body {
   vertical-align: middle;
 }
 
+.list_footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 25px 0;
+}
+
 input[type="checkbox"] {
   position: relative;
   padding: 0;
   vertical-align: middle;
-  margin-right: 15px;
+  margin-right: 16px;
   width: 20px;
   height: 20px;
 }
@@ -114,22 +162,14 @@ input[type="checkbox"]:checked ~ label, input[type="checkbox"].checked ~ label {
   border: none;
   cursor: pointer;
   opacity: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .delete i {
   font-size: 14px;
   line-height: 20.27px;
-}
-
-.list_footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 24px;
-  margin-right: 48px;
 }
 
 .cancel {
@@ -144,38 +184,40 @@ input[type="checkbox"]:checked ~ label, input[type="checkbox"].checked ~ label {
   margin-top: 60px;
 }
 
-.empty p {
-  margin-bottom: 16px;
+.empty h2 {
+  font-size: 16px;
+  line-height: 23.17px;
+  font-weight: 400;
 }
 
-@media (max-width: 576px) {
+@media screen and (max-width: 768px) {
   body {
     background: #FFD370;
   }
-  .wrap, .main {
-    width: 311px;
+  nav {
+    margin-bottom: 0;
   }
-  .delete {
-    opacity: 1;
-  }
-  nav img {
-    vertical-align: middle;
-    width: 90%;
-    margin: 0;
-  }
-  nav ul {
-    display: block;
-  }
-  nav ul li {
-    margin-right: 0;
-  }
-  nav ul a {
+  nav li {
     display: none;
-  }
-  nav ul a.logout {
-    display: block;
     font-size: 14px;
     line-height: 20.27px;
+  }
+  nav li:last-of-type {
+    display: block;
+  }
+  .wrap {
+    width: 311px;
+  }
+  .list_items, .list_footer {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+  .list_footer {
+    margin-bottom: 17px;
+  }
+  .delete {
+    right: 0;
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=todolist.css.map */

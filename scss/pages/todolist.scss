@@ -1,15 +1,36 @@
-@import "variable";
+@import "../variable";
 
 body {
-  background: linear-gradient(172.7deg, $color_primary 5.12%, $color_primary 53.33%, $color_primary 53.44%, #FFFFFF 53.45%, #FFFFFF 94.32%);
+  background: linear-gradient(172.7deg, $color_primary 5.12%, $color_primary 53.33%, $color_primary 53.44%, #FFFFFF 53.45%, #FFFFFF 94.32%) no-repeat;
+}
+
+.container {
+  padding-bottom: 36px;
+}
+
+// nav
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	margin-bottom: 24px;
+	h1, .h1 {
+		margin-bottom: 0; // overwrite base settings
+		padding: 0 12px;
+	}
+	ul {
+		display: flex;
+	}
+	li a {
+		padding: 24px 12px;
+	}
+	.logout {
+		font-weight: $font_weight_regular;
+	}
 }
 
 .wrap {
-  display: block;
-  width: 100%;
-}
-
-.main {
   margin: 0 auto;
   width: 500px;
 }
@@ -18,13 +39,11 @@ body {
   position: relative;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  margin: 16px 0;
   .btn_img {
     position: absolute;
     width: inherit;
     margin: 4px;
-    padding: 0;
-    // 扣除 input padding
+    padding: 0; // overwrite base settings on input tag
     top: 0;
     right: 0;
   }
@@ -34,12 +53,16 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   background: #fff;
-  padding-bottom: 8px;
+  margin-top: 16px;
+  padding-bottom: 7px;
+  font-size: $font_size_s;
+  line-height: $line_height_s;
 }
 
 .list_header {
   display: flex;
   justify-content: space-around;
+  font-weight: $font_weight_bold;
   li {
     cursor: pointer;
     text-align: center;
@@ -51,16 +74,17 @@ body {
   }
 }
 
+.list_items, .list_footer  {
+  padding-left: 24px;
+  padding-right: 48px;
+}
+
 .list_items {
+  margin: 6px 0;
   .list_item {
     position: relative;
-    padding: 24px 0 15px;
-    margin-left: 24px;
-    margin-right: 48px;
+    padding: 17px 0 15px;
     border-bottom: 1px solid #E5E5E5;
-    &:not(:first-child){
-      padding-top: 15px;
-    }
     &:hover .delete{
       opacity: 1;
     }
@@ -70,11 +94,17 @@ body {
   }
 }
 
+.list_footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+}
+
 input[type="checkbox"] {
   position: relative;
   padding: 0; // remove base settings
   vertical-align: middle;
-  margin-right: 15px;
+  margin-right: 16px;
   width: 20px;
   height: 20px;
   &:checked, &.checked {
@@ -103,17 +133,13 @@ input[type="checkbox"] {
   border: none;
   cursor: pointer;
   opacity: 0;
+  // vertical align
+  top: 50%;
+  transform: translateY(-50%);
   i {
     font-size: $font_size_s;
     line-height: $line_height_s;
   }
-}
-
-.list_footer {
-  display: flex;
-  justify-content: space-between;
-  margin: 24px;
-  margin-right: 48px;
 }
 
 .cancel {
@@ -126,40 +152,46 @@ input[type="checkbox"] {
 .empty {
   text-align: center;
   margin-top: 60px;
-  p{
-    margin-bottom: 16px;
+  h2 {
+    font-size: $font_size_m;
+    line-height: $line_height_m;
+    font-weight: $font_weight_regular;
   }
 }
 
-@media (max-width: 576px) {
+@media screen and (max-width: 768px) {
   body {
     background: $color_primary;
   }
-  .wrap, .main {
+
+  nav {
+		margin-bottom: 0;
+		// hidden  navbar item but the last one(logout)
+		li {
+			display: none;
+      font-size: $font_size_s;
+      line-height: $line_height_s;
+			&:last-of-type {
+				display: block;
+			}
+		}
+	}
+
+  .wrap {
     width: 311px;
   }
+
+  .list_items, .list_footer {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .list_footer {
+    margin-bottom: 17px;
+  }
+
   .delete {
+    right: 0;
     opacity: 1;
   }
-  nav {
-    img {
-      vertical-align: middle;
-      width: 90%;
-      margin: 0;
-    }    
-    ul {
-      display: block;
-      li {
-        margin-right: 0;
-      }
-      a {
-        display: none;
-      }
-      a.logout {
-        display: block;
-        font-size: $font_size_s;
-        line-height: $line-height_s;
-      }
-    }
-  } 
 }
