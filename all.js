@@ -12,14 +12,12 @@ function NavBar() {
       </h1>
       <ul>
         <li>
-          <a className="bold" href="#">
+          <a className="active" href="#">
             王小明的待辦
           </a>
         </li>
         <li>
-          <a className="logout" href="./index.html">
-            登出
-          </a>
+          <a href="./index.html">登出</a>
         </li>
       </ul>
     </nav>
@@ -87,7 +85,7 @@ function App() {
           <InputField todo={todo} setTodo={setTodo} />
           <div className="list">
             <ul className="list_header">
-              <li className="actived">全部</li>
+              <li className="active">全部</li>
               <li>待完成</li>
               <li>已完成</li>
             </ul>
