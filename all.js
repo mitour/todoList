@@ -1,4 +1,4 @@
-const { useState } = React;
+const { useState, useEffect } = React;
 function NavBar() {
   return (
     <nav>
@@ -73,6 +73,10 @@ function App() {
     },
     { id: Math.random().toString(36), name: "整理電腦資料夾", isDone: true },
   ]);
+  const [filterTodo, setFilterTodo] = useState([]);
+  const tabs = ["全部", "待完成", "已完成"];
+  const [currentTab, setCurrentTab] = useState("全部");
+
   function handleRemoveTodo(id) {
     setTodo(todo.filter((item) => item.id != id));
   }
@@ -86,6 +90,17 @@ function App() {
   function handleCleanDone() {
     setTodo(todo.filter((item) => !item.isDone));
   }
+  function handleChangeTab(id) {
+    setCurrentTab(id);
+  }
+  useEffect(() => {
+    if (currentTab === "全部") setFilterTodo(todo);
+    if (currentTab === "待完成")
+      setFilterTodo(todo.filter((item) => !item.isDone));
+    if (currentTab === "已完成")
+      setFilterTodo(todo.filter((item) => item.isDone));
+  }, [todo, currentTab]);
+
   return (
     <>
       <div className="container">
@@ -94,12 +109,20 @@ function App() {
           <InputField todo={todo} setTodo={setTodo} />
           <div className="list">
             <ul className="list_header">
-              <li className="active">全部</li>
-              <li>待完成</li>
-              <li>已完成</li>
+              {tabs.map((item, index) => {
+                return (
+                  <li
+                    key={index}
+                    className={item === currentTab ? "active" : ""}
+                    onClick={() => handleChangeTab(item)}
+                  >
+                    {item}
+                  </li>
+                );
+              })}
             </ul>
             <ul className="list_items">
-              {todo.map((item, index) => {
+              {filterTodo.map((item, index) => {
                 return (
                   <li key={item.id} className="list_item">
                     <input
@@ -122,7 +145,11 @@ function App() {
             </ul>
             <div className="list_footer">
               <span>
-                {todo.filter((item) => item.isDone).length} 個已完成事項
+                {currentTab === "已完成"
+                  ? `${todo.filter((item) => item.isDone).length} 個已完成事項`
+                  : `${
+                      todo.filter((item) => !item.isDone).length
+                    } 個待完成事項`}
               </span>
               <button className="cancel" onClick={handleCleanDone}>
                 清除已完成項目
