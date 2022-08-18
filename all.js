@@ -88,7 +88,12 @@ function App() {
               {todo.map((item, index) => {
                 return (
                   <li key={item.id} className="list_item">
-                    <input type="checkbox" name="todolist" id={index} />
+                    <input
+                      type="checkbox"
+                      name="todolist"
+                      id={index}
+                      defaultChecked={item.isDone}
+                    />
                     <label htmlFor={index}>{item.name}</label>
                     <button
                       className="delete"
@@ -101,7 +106,9 @@ function App() {
               })}
             </ul>
             <div className="list_footer">
-              <span>{todo.length} 個待完成事項</span>
+              <span>
+                {todo.filter((item) => item.isDone).length} 個已完成事項
+              </span>
               <button className="cancel">清除已完成項目</button>
             </div>
           </div>
