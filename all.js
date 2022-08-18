@@ -103,7 +103,6 @@ function App() {
                       onClick={() => handleCheckTodo(item.id)}
                     />
                     <label htmlFor={index}>{item.name}</label>
-                    <span>{item.id}</span>
                     <button
                       className="delete"
                       onClick={() => handleRemoveTodo(item.id)}
