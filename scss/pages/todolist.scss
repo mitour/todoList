@@ -10,6 +10,7 @@ body {
       #ffffff 94.32%
     )
     no-repeat;
+  min-height: 100vh;
 }
 
 .container {
@@ -84,7 +85,7 @@ nav {
     text-align: center;
     padding: 16px;
     width: 100%;
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid lighten($color_accent, 70%);
     transition: border 0.3s;
     &:hover {
       border-color: $color_accent;

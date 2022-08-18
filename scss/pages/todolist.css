@@ -1,5 +1,6 @@
 body {
   background: linear-gradient(172.7deg, #FFD370 5.12%, #FFD370 53.33%, #FFD370 53.44%, #ffffff 53.45%, #ffffff 94.32%) no-repeat;
+  min-height: 100vh;
 }
 
 .container {
@@ -74,7 +75,7 @@ nav .active {
   text-align: center;
   padding: 16px;
   width: 100%;
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid #e6e6e6;
   transition: border 0.3s;
 }
 .list_header li:hover {
