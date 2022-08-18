@@ -59,6 +59,33 @@ function InputField({ todo, setTodo }) {
   );
 }
 
+function Todolist({ filterTodo, handleCheckTodo, handleRemoveTodo }) {
+  return (
+    <ul className="list_items">
+      {filterTodo.map((item, index) => {
+        return (
+          <li key={item.id} className="list_item">
+            <input
+              type="checkbox"
+              name="todolist"
+              id={index}
+              defaultChecked={item.isDone}
+              onClick={() => handleCheckTodo(item.id)}
+            />
+            <label htmlFor={index}>{item.name}</label>
+            <button
+              className="delete"
+              onClick={() => handleRemoveTodo(item.id)}
+            >
+              <i className="fas fa-times"></i>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 function App() {
   const [todo, setTodo] = useState([
     {
@@ -121,28 +148,11 @@ function App() {
                 );
               })}
             </ul>
-            <ul className="list_items">
-              {filterTodo.map((item, index) => {
-                return (
-                  <li key={item.id} className="list_item">
-                    <input
-                      type="checkbox"
-                      name="todolist"
-                      id={index}
-                      defaultChecked={item.isDone}
-                      onClick={() => handleCheckTodo(item.id)}
-                    />
-                    <label htmlFor={index}>{item.name}</label>
-                    <button
-                      className="delete"
-                      onClick={() => handleRemoveTodo(item.id)}
-                    >
-                      <i className="fas fa-times"></i>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+            <Todolist
+              filterTodo={filterTodo}
+              handleCheckTodo={handleCheckTodo}
+              handleRemoveTodo={handleRemoveTodo}
+            />
             <div className="list_footer">
               <span>
                 {currentTab === "已完成"
