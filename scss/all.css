@@ -43,7 +43,7 @@ blockquote, q {
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -62,8 +62,7 @@ img {
 }
 
 *, *::before, *::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -102,7 +101,6 @@ a {
   text-decoration: none;
   display: inline-block;
 }
-
 a:link, a:active, a:visited {
   color: #333333;
 }
@@ -141,5 +139,4 @@ input {
 .btn_sub {
   background: transparent;
   color: #000;
-}
-/*# sourceMappingURL=all.css.map */
+}/*# sourceMappingURL=all.css.map */

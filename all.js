@@ -33,7 +33,8 @@ function InputField({ todo, setTodo }) {
     setInputValue(e.target.value);
   }
 
-  function handleAddTodo() {
+  function handleAddTodo(e) {
+    e.preventDefault();
     if (!inputValue) return;
     setTodo([
       ...todo,
@@ -43,21 +44,20 @@ function InputField({ todo, setTodo }) {
   }
 
   return (
-    <div className="embed_submit_field">
+    <form className="embed_submit_field">
       <input
         type="text"
         value={inputValue}
         placeholder="新增待辦事項"
         onChange={handleInput}
       />
-      <input
-        className="btn_img"
-        type="image"
-        src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/plus%201.png?raw=true"
-        alt="Submit"
-        onClick={handleAddTodo}
-      />
-    </div>
+      <button className="btn_img" type="submit" onClick={handleAddTodo}>
+        <img
+          src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/plus%201.png?raw=true"
+          alt="Submit"
+        />
+      </button>
+    </form>
   );
 }
 

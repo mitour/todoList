@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(172.7deg, #FFD370 5.12%, #FFD370 53.33%, #FFD370 53.44%, #FFFFFF 53.45%, #FFFFFF 94.32%) no-repeat;
+  background: linear-gradient(172.7deg, #FFD370 5.12%, #FFD370 53.33%, #FFD370 53.44%, #ffffff 53.45%, #ffffff 94.32%) no-repeat;
 }
 
 .container {
@@ -7,34 +7,23 @@ body {
 }
 
 nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 20px;
   margin-bottom: 24px;
 }
-
-nav h1, nav .h1 {
+nav h1,
+nav .h1 {
   margin-bottom: 0;
   padding: 0 12px;
 }
-
 nav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 nav li a {
   padding: 24px 12px;
 }
-
 nav .logout {
   font-weight: 400;
 }
@@ -47,11 +36,11 @@ nav .logout {
 .embed_submit_field {
   position: relative;
   border-radius: 10px;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-
 .embed_submit_field .btn_img {
+  border: 0;
+  background-color: transparent;
   position: absolute;
   width: inherit;
   margin: 4px;
@@ -62,8 +51,7 @@ nav .logout {
 
 .list {
   border-radius: 10px;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   background: #fff;
   margin-top: 16px;
   padding-bottom: 7px;
@@ -72,26 +60,22 @@ nav .logout {
 }
 
 .list_header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   font-weight: 700;
 }
-
 .list_header li {
   cursor: pointer;
   text-align: center;
   padding: 16px;
   width: 100%;
 }
-
 .list_header li.actived {
   border-bottom: 2px solid #333333;
 }
 
-.list_items, .list_footer {
+.list_items,
+.list_footer {
   padding-left: 24px;
   padding-right: 48px;
 }
@@ -99,32 +83,25 @@ nav .logout {
 .list_items {
   margin: 6px 0;
 }
-
 .list_items .list_item {
   position: relative;
   padding: 17px 0 15px;
-  border-bottom: 1px solid #E5E5E5;
+  border-bottom: 1px solid #e5e5e5;
 }
-
 .list_items .list_item:hover .delete {
   opacity: 1;
 }
-
 .list_items label {
   vertical-align: middle;
 }
 
 .list_footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   margin: 25px 0;
 }
 
-input[type="checkbox"] {
+input[type=checkbox] {
   position: relative;
   padding: 0;
   vertical-align: middle;
@@ -132,14 +109,12 @@ input[type="checkbox"] {
   width: 20px;
   height: 20px;
 }
-
-input[type="checkbox"]:checked, input[type="checkbox"].checked {
+input[type=checkbox]:checked, input[type=checkbox].checked {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
 }
-
-input[type="checkbox"]:checked::before, input[type="checkbox"].checked::before {
+input[type=checkbox]:checked::before, input[type=checkbox].checked::before {
   position: absolute;
   display: block;
   font-family: "Font Awesome 5 Free";
@@ -149,8 +124,7 @@ input[type="checkbox"]:checked::before, input[type="checkbox"].checked::before {
   height: 20px;
   color: #FFD370;
 }
-
-input[type="checkbox"]:checked ~ label, input[type="checkbox"].checked ~ label {
+input[type=checkbox]:checked ~ label, input[type=checkbox].checked ~ label {
   text-decoration: line-through;
   color: #9F9A91;
 }
@@ -163,10 +137,8 @@ input[type="checkbox"]:checked ~ label, input[type="checkbox"].checked ~ label {
   cursor: pointer;
   opacity: 0;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
-
 .delete i {
   font-size: 14px;
   line-height: 20.27px;
@@ -183,7 +155,6 @@ input[type="checkbox"]:checked ~ label, input[type="checkbox"].checked ~ label {
   text-align: center;
   margin-top: 60px;
 }
-
 .empty h2 {
   font-size: 16px;
   line-height: 23.17px;
@@ -208,7 +179,8 @@ input[type="checkbox"]:checked ~ label, input[type="checkbox"].checked ~ label {
   .wrap {
     width: 311px;
   }
-  .list_items, .list_footer {
+  .list_items,
+.list_footer {
     padding-right: 16px;
     padding-left: 16px;
   }
@@ -219,5 +191,4 @@ input[type="checkbox"]:checked ~ label, input[type="checkbox"].checked ~ label {
     right: 0;
     opacity: 1;
   }
-}
-/*# sourceMappingURL=todolist.css.map */
+}/*# sourceMappingURL=todolist.css.map */
