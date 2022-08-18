@@ -66,6 +66,12 @@ function App() {
       name: "把冰箱發霉的檸檬拿去丟",
       isDone: false,
     },
+    {
+      id: Math.random().toString(36),
+      name: "打電話叫媽媽匯款給我",
+      isDone: false,
+    },
+    { id: Math.random().toString(36), name: "整理電腦資料夾", isDone: true },
   ]);
   function handleRemoveTodo(id) {
     setTodo(todo.filter((item) => item.id != id));
@@ -76,6 +82,9 @@ function App() {
       if (item.id === id) item.isDone = !item.isDone;
     });
     setTodo(newArr);
+  }
+  function handleCleanDone() {
+    setTodo(todo.filter((item) => !item.isDone));
   }
   return (
     <>
@@ -115,7 +124,9 @@ function App() {
               <span>
                 {todo.filter((item) => item.isDone).length} 個已完成事項
               </span>
-              <button className="cancel">清除已完成項目</button>
+              <button className="cancel" onClick={handleCleanDone}>
+                清除已完成項目
+              </button>
             </div>
           </div>
         </section>
