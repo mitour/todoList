@@ -72,6 +72,13 @@ function App() {
   function handleRemoveTodo(id) {
     setTodo(todo.filter((item) => item.id != id));
   }
+  function handleCheckTodo(id) {
+    let newArr = [...todo];
+    newArr.map((item) => {
+      if (item.id === id) item.isDone = !item.isDone;
+    });
+    setTodo(newArr);
+  }
   return (
     <>
       <div className="container">
@@ -93,6 +100,7 @@ function App() {
                       name="todolist"
                       id={index}
                       defaultChecked={item.isDone}
+                      onClick={() => handleCheckTodo(item.id)}
                     />
                     <label htmlFor={index}>{item.name}</label>
                     <button
