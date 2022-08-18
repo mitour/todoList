@@ -1,89 +1,104 @@
 // reset
 
 button {
-	padding: 0;
+  padding: 0;
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
-*, *::before, *::after {
-	box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   // outline: 1px solid blue;
 }
 
-body{
-	background: $color_primary;
-	color: $color_accent;
-	font-family: $font_family;
-	font-size: $font_size_m;
-	line-height: $line_height_m;
+body {
+  background: $color_primary;
+  color: $color_accent;
+  font-family: $font_family;
+  font-size: $font_size_m;
+  line-height: $line_height_m;
 }
 
 .container {
-	max-width: 1028px;
-	margin: 0 auto;
+  max-width: 1028px;
+  margin: 0 auto;
 }
 
 // text
-h1, .h1 {
-	margin-bottom: 20px;
+h1,
+.h1 {
+  margin-bottom: 20px;
 }
 
-h2, .h2 {
-	font-size: $font_size_l;
-	line-height: $line_height_l;
-	font-weight: $font_weight_bold;
-	margin-top: 24px;
-	margin-bottom: 16px;
+h2,
+.h2 {
+  font-size: $font_size_l;
+  line-height: $line_height_l;
+  font-weight: $font_weight_bold;
+  margin-top: 24px;
+  margin-bottom: 16px;
 }
 
-h3, .h3 {
-	font-size: $font_size_s;
-	line-height: $line_height_s;
-	font-weight: $font_weight_bold;
-	margin-bottom: 4px;
+h3,
+.h3 {
+  font-size: $font_size_s;
+  line-height: $line_height_s;
+  font-weight: $font_weight_bold;
+  margin-bottom: 4px;
 }
 
 a {
-	text-decoration: none;
-	display: inline-block;
-	&:link, &:active, &:visited {
+  text-decoration: none;
+  display: inline-block;
+  &:link,
+  &:active,
+  &:visited {
     color: $color_accent;
   }
 }
 
 .bold {
-	font-weight: $font_weight_bold;
+  font-weight: $font_weight_bold;
 }
 
 .alert {
-	color: $color_alert;
+  color: $color_alert;
 }
 
 input {
-	width: 100%;
-	border: none;
-	border-radius: 10px;
-	padding: 12px 16px;
-	font-size: $font_size_m;
-	line-height: $line_height_m;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: $font_size_m;
+  line-height: $line_height_m;
+  &[type="text"],
+  &[type="email"],
+  &[type="password"] {
+    cursor: text;
+  }
+  &[type="checkbox"] {
+    cursor: pointer;
+  }
 }
 
 .btn {
-	display: inline-block;
-	width: auto; // overwrite input tag settings
-	padding: 12px 48px;
-	margin-bottom: 24px;
+  display: inline-block;
+  width: auto; // overwrite input tag settings
+  padding: 12px 48px;
+  margin-bottom: 24px;
   border-radius: 10px;
-	background: $color_accent;
-	color: #fff;
-	font-weight: $font_weight_bold;
-	font-size: $font_size_m;
-	line-height: $line_height_m;
-	cursor: pointer;
+  background: $color_accent;
+  color: #fff;
+  font-weight: $font_weight_bold;
+  font-size: $font_size_m;
+  line-height: $line_height_m;
+  cursor: pointer;
 }
 
 .btn_sub {

@@ -61,7 +61,9 @@ img {
   height: auto;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -78,11 +80,13 @@ body {
   margin: 0 auto;
 }
 
-h1, .h1 {
+h1,
+.h1 {
   margin-bottom: 20px;
 }
 
-h2, .h2 {
+h2,
+.h2 {
   font-size: 24px;
   line-height: 34.75px;
   font-weight: 700;
@@ -90,7 +94,8 @@ h2, .h2 {
   margin-bottom: 16px;
 }
 
-h3, .h3 {
+h3,
+.h3 {
   font-size: 14px;
   line-height: 20.27px;
   font-weight: 700;
@@ -120,6 +125,12 @@ input {
   padding: 12px 16px;
   font-size: 16px;
   line-height: 23.17px;
+}
+input[type=text], input[type=email], input[type=password] {
+  cursor: text;
+}
+input[type=checkbox] {
+  cursor: pointer;
 }
 
 .btn {
