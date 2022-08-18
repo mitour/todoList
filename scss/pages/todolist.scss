@@ -1,7 +1,15 @@
 @import "../variable";
 
 body {
-  background: linear-gradient(172.7deg, $color_primary 5.12%, $color_primary 53.33%, $color_primary 53.44%, #FFFFFF 53.45%, #FFFFFF 94.32%) no-repeat;
+  background: linear-gradient(
+      172.7deg,
+      $color_primary 5.12%,
+      $color_primary 53.33%,
+      $color_primary 53.44%,
+      #ffffff 53.45%,
+      #ffffff 94.32%
+    )
+    no-repeat;
 }
 
 .container {
@@ -10,24 +18,25 @@ body {
 
 // nav
 nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 20px;
-	margin-bottom: 24px;
-	h1, .h1 {
-		margin-bottom: 0; // overwrite base settings
-		padding: 0 12px;
-	}
-	ul {
-		display: flex;
-	}
-	li a {
-		padding: 24px 12px;
-	}
-	.logout {
-		font-weight: $font_weight_regular;
-	}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 24px;
+  h1,
+  .h1 {
+    margin-bottom: 0; // overwrite base settings
+    padding: 0 12px;
+  }
+  ul {
+    display: flex;
+  }
+  li a {
+    padding: 24px 12px;
+  }
+  .logout {
+    font-weight: $font_weight_regular;
+  }
 }
 
 .wrap {
@@ -40,6 +49,8 @@ nav {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   .btn_img {
+    border: 0;
+    background-color: transparent;
     position: absolute;
     width: inherit;
     margin: 4px;
@@ -74,7 +85,8 @@ nav {
   }
 }
 
-.list_items, .list_footer  {
+.list_items,
+.list_footer {
   padding-left: 24px;
   padding-right: 48px;
 }
@@ -84,8 +96,8 @@ nav {
   .list_item {
     position: relative;
     padding: 17px 0 15px;
-    border-bottom: 1px solid #E5E5E5;
-    &:hover .delete{
+    border-bottom: 1px solid #e5e5e5;
+    &:hover .delete {
       opacity: 1;
     }
   }
@@ -107,13 +119,14 @@ input[type="checkbox"] {
   margin-right: 16px;
   width: 20px;
   height: 20px;
-  &:checked, &.checked {
+  &:checked,
+  &.checked {
     appearance: none;
     &::before {
       position: absolute;
       display: block;
-      font-family: "Font Awesome 5 Free"; 
-      font-weight: 900; 
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
       content: "\f00c";
       width: 20px;
       height: 20px;
@@ -165,23 +178,24 @@ input[type="checkbox"] {
   }
 
   nav {
-		margin-bottom: 0;
-		// hidden  navbar item but the last one(logout)
-		li {
-			display: none;
+    margin-bottom: 0;
+    // hidden  navbar item but the last one(logout)
+    li {
+      display: none;
       font-size: $font_size_s;
       line-height: $line_height_s;
-			&:last-of-type {
-				display: block;
-			}
-		}
-	}
+      &:last-of-type {
+        display: block;
+      }
+    }
+  }
 
   .wrap {
     width: 311px;
   }
 
-  .list_items, .list_footer {
+  .list_items,
+  .list_footer {
     padding-right: 16px;
     padding-left: 16px;
   }
