@@ -38,7 +38,7 @@ function InputField({ todo, setTodo }) {
     if (!inputValue) return;
     setTodo([
       ...todo,
-      { id: new Date().toLocaleString(), name: inputValue, isDone: false },
+      { id: Math.random().toString(36), name: inputValue, isDone: false },
     ]);
     setInputValue("");
   }
@@ -64,7 +64,7 @@ function InputField({ todo, setTodo }) {
 function App() {
   const [todo, setTodo] = useState([
     {
-      id: new Date().toLocaleString(),
+      id: Math.random().toString(36),
       name: "把冰箱發霉的檸檬拿去丟",
       isDone: false,
     },
@@ -103,6 +103,7 @@ function App() {
                       onClick={() => handleCheckTodo(item.id)}
                     />
                     <label htmlFor={index}>{item.name}</label>
+                    <span>{item.id}</span>
                     <button
                       className="delete"
                       onClick={() => handleRemoveTodo(item.id)}
