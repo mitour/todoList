@@ -86,6 +86,18 @@ function Todolist({ filterTodo, handleCheckTodo, handleRemoveTodo }) {
   );
 }
 
+function Empty() {
+  return (
+    <div class="empty">
+      <h2>目前尚無待辦事項</h2>
+      <img
+        src="https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/empty%201.png"
+        alt="empty"
+      />
+    </div>
+  );
+}
+
 function App() {
   const [todo, setTodo] = useState([
     {
@@ -134,38 +146,44 @@ function App() {
         <NavBar />
         <section className="wrap">
           <InputField todo={todo} setTodo={setTodo} />
-          <div className="list">
-            <ul className="list_header">
-              {tabs.map((item, index) => {
-                return (
-                  <li
-                    key={index}
-                    className={item === currentTab ? "active" : ""}
-                    onClick={() => handleChangeTab(item)}
-                  >
-                    {item}
-                  </li>
-                );
-              })}
-            </ul>
-            <Todolist
-              filterTodo={filterTodo}
-              handleCheckTodo={handleCheckTodo}
-              handleRemoveTodo={handleRemoveTodo}
-            />
-            <div className="list_footer">
-              <span>
-                {currentTab === "已完成"
-                  ? `${todo.filter((item) => item.isDone).length} 個已完成事項`
-                  : `${
-                      todo.filter((item) => !item.isDone).length
-                    } 個待完成事項`}
-              </span>
-              <button className="cancel" onClick={handleCleanDone}>
-                清除已完成項目
-              </button>
+          {todo.length ? (
+            <div className="list">
+              <ul className="list_header">
+                {tabs.map((item, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className={item === currentTab ? "active" : ""}
+                      onClick={() => handleChangeTab(item)}
+                    >
+                      {item}
+                    </li>
+                  );
+                })}
+              </ul>
+              <Todolist
+                filterTodo={filterTodo}
+                handleCheckTodo={handleCheckTodo}
+                handleRemoveTodo={handleRemoveTodo}
+              />
+              <div className="list_footer">
+                <span>
+                  {currentTab === "已完成"
+                    ? `${
+                        todo.filter((item) => item.isDone).length
+                      } 個已完成事項`
+                    : `${
+                        todo.filter((item) => !item.isDone).length
+                      } 個待完成事項`}
+                </span>
+                <button className="cancel" onClick={handleCleanDone}>
+                  清除已完成項目
+                </button>
+              </div>
             </div>
-          </div>
+          ) : (
+            <Empty />
+          )}
         </section>
       </div>
     </>
