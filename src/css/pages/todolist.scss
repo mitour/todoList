@@ -1,0 +1,237 @@
+@import "../shared/variable";
+@import url("https://use.fontawesome.com/releases/v5.7.0/css/all.css");
+.todolist {
+  body {
+    background: linear-gradient(
+        172.7deg,
+        $color_primary 5.12%,
+        $color_primary 53.33%,
+        $color_primary 53.44%,
+        #ffffff 53.45%,
+        #ffffff 94.32%
+      )
+      no-repeat;
+    min-height: 100vh;
+  }
+
+  .container {
+    padding-bottom: 36px;
+  }
+
+  // nav
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 24px;
+    h1,
+    .h1 {
+      margin-bottom: 0; // overwrite base settings
+      padding: 0 12px;
+    }
+    ul {
+      display: flex;
+    }
+    li a {
+      padding: 24px 12px;
+      transition: font-weight 0.3s;
+      &:hover {
+        font-weight: $font_weight_bold;
+      }
+    }
+    .active {
+      font-weight: $font_weight_bold;
+    }
+  }
+
+  .wrap {
+    margin: 0 auto;
+    width: 500px;
+  }
+
+  .embed_submit_field {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    .btn_img {
+      border: 0;
+      background-color: transparent;
+      position: absolute;
+      width: inherit;
+      margin: 4px;
+      padding: 0; // overwrite base settings on input tag
+      top: 0;
+      right: 0;
+      cursor: pointer;
+    }
+  }
+
+  .list {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background: #fff;
+    margin-top: 16px;
+    padding-bottom: 7px;
+    font-size: $font_size_s;
+    line-height: $line_height_s;
+  }
+
+  .list_header {
+    display: flex;
+    justify-content: space-around;
+    font-weight: $font_weight_bold;
+    li {
+      cursor: pointer;
+      text-align: center;
+      padding: 16px;
+      width: 100%;
+      border-bottom: 2px solid lighten($color_accent, 70%);
+      transition: border 0.3s;
+      &:hover {
+        border-color: $color_accent;
+      }
+      &.active {
+        border-bottom: 2px solid $color_accent;
+      }
+    }
+  }
+
+  .list_items,
+  .list_footer {
+    padding-left: 24px;
+    padding-right: 48px;
+  }
+
+  .list_items {
+    margin: 6px 0;
+    &:hover .list_item:not(:hover) {
+      opacity: 50%;
+    }
+    .list_item {
+      transition: opacity 0.3s;
+      position: relative;
+      border-bottom: 1px solid #e5e5e5;
+      &:hover .delete {
+        opacity: 1;
+      }
+    }
+    label {
+      transition: all 0.3s;
+      padding: 17px 0 15px;
+      vertical-align: middle;
+      display: inline-block;
+      width: calc(100% - 40px);
+      cursor: pointer;
+    }
+  }
+
+  .list_footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+  }
+
+  input[type="checkbox"] {
+    position: relative;
+    padding: 0; // remove base settings
+    vertical-align: middle;
+    margin-right: 16px;
+    width: 20px;
+    height: 20px;
+    &:checked,
+    &.checked {
+      appearance: none;
+      &::before {
+        position: absolute;
+        display: block;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f00c";
+        width: 20px;
+        height: 20px;
+        color: $color_primary;
+      }
+      ~ label {
+        text-decoration: line-through;
+        color: $color_disable;
+      }
+    }
+  }
+
+  .delete {
+    position: absolute;
+    right: -24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    opacity: 0;
+    // vertical align
+    top: 50%;
+    transform: translateY(-50%);
+    i {
+      font-size: $font_size_s;
+      line-height: $line_height_s;
+    }
+  }
+
+  .cancel {
+    cursor: pointer;
+    color: $color_disable;
+    background: transparent;
+    border: none;
+    transition: color 0.3s;
+    &:hover {
+      color: $color_accent;
+    }
+  }
+
+  .empty {
+    text-align: center;
+    margin-top: 60px;
+    h2 {
+      font-size: $font_size_m;
+      line-height: $line_height_m;
+      font-weight: $font_weight_regular;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    body {
+      background: $color_primary;
+    }
+
+    nav {
+      margin-bottom: 0;
+      // hidden  navbar item but the last one(logout)
+      li {
+        display: none;
+        font-size: $font_size_s;
+        line-height: $line_height_s;
+        &:last-of-type {
+          display: block;
+        }
+      }
+    }
+
+    .wrap {
+      width: 311px;
+    }
+
+    .list_items,
+    .list_footer {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+
+    .list_footer {
+      margin-bottom: 17px;
+    }
+
+    .delete {
+      right: 0;
+      opacity: 1;
+    }
+  }
+}

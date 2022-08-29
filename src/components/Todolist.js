@@ -1,23 +1,26 @@
-const { useState, useEffect } = React;
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <nav>
       <h1>
-        <a href="#">
+        <Link to="#">
           <img
             src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/logo.png?raw=true"
             alt="online todo list"
           />
-        </a>
+        </Link>
       </h1>
       <ul>
         <li>
-          <a className="active" href="#">
+          <Link to="#" className="active">
             王小明的待辦
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="./index.html">登出</a>
+          <Link to="/">登出</Link>
         </li>
       </ul>
     </nav>
@@ -77,7 +80,7 @@ function Todolist({ filterTodo, handleCheckTodo, handleRemoveTodo }) {
               className="delete"
               onClick={() => handleRemoveTodo(item.id)}
             >
-              <i className="fas fa-times"></i>
+              <FontAwesomeIcon icon={faTimes} />
             </button>
           </li>
         );
@@ -117,11 +120,11 @@ function App() {
   const [currentTab, setCurrentTab] = useState("全部");
 
   function handleRemoveTodo(id) {
-    setTodo(todo.filter((item) => item.id != id));
+    setTodo(todo.filter((item) => item.id !== id));
   }
   function handleCheckTodo(id) {
     let newArr = [...todo];
-    newArr.map((item) => {
+    newArr.forEach((item) => {
       if (item.id === id) item.isDone = !item.isDone;
     });
     setTodo(newArr);
@@ -141,7 +144,7 @@ function App() {
   }, [todo, currentTab]);
 
   return (
-    <>
+    <div className="todolist">
       <div className="container">
         <NavBar />
         <section className="wrap">
@@ -186,9 +189,8 @@ function App() {
           )}
         </section>
       </div>
-    </>
+    </div>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+export default App;
