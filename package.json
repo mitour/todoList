@@ -19,7 +19,7 @@
     "sweetalert2": "^11.4.29",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://github.com/mitour/todoList.git",
+  "homepage": "https://mitour.github.io/todoList",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
