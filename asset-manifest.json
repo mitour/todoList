@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mitour/todoList.git/static/css/main.a73b51ef.css",
-    "main.js": "/mitour/todoList.git/static/js/main.83689351.js",
+    "main.js": "/mitour/todoList.git/static/js/main.c77352cf.js",
     "static/js/787.97a945da.chunk.js": "/mitour/todoList.git/static/js/787.97a945da.chunk.js",
     "index.html": "/mitour/todoList.git/index.html",
     "main.a73b51ef.css.map": "/mitour/todoList.git/static/css/main.a73b51ef.css.map",
-    "main.83689351.js.map": "/mitour/todoList.git/static/js/main.83689351.js.map",
+    "main.c77352cf.js.map": "/mitour/todoList.git/static/js/main.c77352cf.js.map",
     "787.97a945da.chunk.js.map": "/mitour/todoList.git/static/js/787.97a945da.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a73b51ef.css",
-    "static/js/main.83689351.js"
+    "static/js/main.c77352cf.js"
   ]
 }
