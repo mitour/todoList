@@ -1,26 +1,31 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+function logout() {
+  localStorage.clear();
+}
 function NavBar() {
+  const nickname = JSON.parse(localStorage.getItem("user")).nickname;
   return (
     <nav>
       <h1>
-        <Link to="#">
+        <NavLink to="#">
           <img
             src="https://github.com/hexschool/webLayoutTraining1st/blob/master/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/logo.png?raw=true"
             alt="online todo list"
           />
-        </Link>
+        </NavLink>
       </h1>
       <ul>
         <li>
-          <Link to="#" className="active">
-            王小明的待辦
-          </Link>
+          <NavLink to="#">{nickname} 的待辦</NavLink>
         </li>
         <li>
-          <Link to="/">登出</Link>
+          <NavLink to="/" onClick={logout}>
+            登出
+          </NavLink>
         </li>
       </ul>
     </nav>

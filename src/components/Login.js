@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 function Login() {
   const {
@@ -22,14 +23,23 @@ function Login() {
     const response = await fetch(API, options);
     const responseJson = await response.json();
 
+    const { error, message, nickname } = responseJson;
+
     if (response.status === 401) {
-      alert(responseJson.error);
+      alert(error);
     }
     if (response.status === 200) {
-      alert(responseJson.message);
+      alert(message);
       navigate("/todolist");
+      const authorization = response.headers.get("authorization");
+      localStorage.setItem("user", JSON.stringify({ nickname, authorization }));
     }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) navigate("/todolist");
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="form">
@@ -58,6 +68,7 @@ function Login() {
                   id="email"
                   type="email"
                   name="email"
+                  value="Admin1@gmail.com"
                   placeholder="請輸入信箱"
                   {...register("email", {
                     required: { value: true, message: "此欄位必填" },
@@ -76,6 +87,7 @@ function Login() {
                   type="password"
                   name="password"
                   placeholder="請輸入密碼"
+                  value="Admin123"
                   {...register("password", {
                     required: { value: true, message: "此欄位必填" },
                     minLength: {
