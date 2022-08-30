@@ -2,11 +2,13 @@ import { useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import Loading from "./Loading";
 import Swal from "sweetalert2";
 
 function logout() {
   localStorage.clear();
 }
+
 function NavBar() {
   const nickname = JSON.parse(localStorage.getItem("user")).nickname;
   return (
@@ -33,7 +35,7 @@ function NavBar() {
   );
 }
 
-function InputField({ fetchTodo }) {
+function InputField({ fetchTodo, setLoading }) {
   const [inputValue, setInputValue] = useState("");
 
   function handleInput(e) {
@@ -41,6 +43,8 @@ function InputField({ fetchTodo }) {
   }
 
   async function fetchAddTodo(inputValue) {
+    setLoading(true);
+
     const API = "https://todoo.5xcamp.us/todos";
     const options = {
       method: "POST",
@@ -53,6 +57,7 @@ function InputField({ fetchTodo }) {
     };
     const response = await fetch(API, options);
     const responseJson = await response.json();
+    setLoading(false);
 
     if (response.status === 401) {
       Swal.fire({
@@ -132,6 +137,7 @@ function Empty() {
 }
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [todo, setTodo] = useState([]);
   const [filterTodo, setFilterTodo] = useState([]);
   const tabs = ["全部", "待完成", "已完成"];
@@ -149,7 +155,7 @@ function App() {
     };
     const response = await fetch(API, options);
     const responseJson = await response.json();
-
+    setLoading(false);
     const { error, todos } = responseJson;
 
     if (response.status === 401) {
@@ -173,6 +179,7 @@ function App() {
   }, [fetchTodo]);
 
   const fetchToggleTodo = async (id) => {
+    setLoading(true);
     const API = `https://todoo.5xcamp.us/todos/${id}/toggle`;
     const options = {
       method: "PATCH",
@@ -184,6 +191,7 @@ function App() {
     };
     const response = await fetch(API, options);
     const responseJson = await response.json();
+    setLoading(false);
 
     if (response.status === 401) {
       Swal.fire({
@@ -202,6 +210,7 @@ function App() {
   };
 
   const fetchDelTodo = async (id) => {
+    setLoading(true);
     const API = `https://todoo.5xcamp.us/todos/${id}`;
     const options = {
       method: "DELETE",
@@ -213,6 +222,8 @@ function App() {
     };
     const response = await fetch(API, options);
     const responseJson = await response.json();
+    setLoading(false);
+
     if (response.status === 401) {
       Swal.fire({
         toast: true,
@@ -269,52 +280,55 @@ function App() {
   }, [todo, currentTab]);
 
   return (
-    <div className="todolist">
-      <div className="container">
-        <NavBar />
-        <section className="wrap">
-          <InputField fetchTodo={fetchTodo} />
-          {todo.length ? (
-            <div className="list">
-              <ul className="list_header">
-                {tabs.map((item, index) => {
-                  return (
-                    <li
-                      key={index}
-                      className={item === currentTab ? "active" : ""}
-                      onClick={() => handleChangeTab(item)}
-                    >
-                      {item}
-                    </li>
-                  );
-                })}
-              </ul>
-              <Todolist
-                filterTodo={filterTodo}
-                fetchToggleTodo={fetchToggleTodo}
-                fetchDelTodo={fetchDelTodo}
-              />
-              <div className="list_footer">
-                <span>
-                  {currentTab === "已完成"
-                    ? `${
-                        todo.filter((item) => item.completed_at).length
-                      } 個已完成事項`
-                    : `${
-                        todo.filter((item) => !item.completed_at).length
-                      } 個待完成事項`}
-                </span>
-                <button className="cancel" onClick={handleCleanDone}>
-                  清除已完成項目
-                </button>
+    <>
+      {loading ? <Loading /> : ""}
+      <div className="todolist">
+        <div className="container">
+          <NavBar />
+          <section className="wrap">
+            <InputField fetchTodo={fetchTodo} setLoading={setLoading} />
+            {todo.length ? (
+              <div className="list">
+                <ul className="list_header">
+                  {tabs.map((item, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className={item === currentTab ? "active" : ""}
+                        onClick={() => handleChangeTab(item)}
+                      >
+                        {item}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <Todolist
+                  filterTodo={filterTodo}
+                  fetchToggleTodo={fetchToggleTodo}
+                  fetchDelTodo={fetchDelTodo}
+                />
+                <div className="list_footer">
+                  <span>
+                    {currentTab === "已完成"
+                      ? `${
+                          todo.filter((item) => item.completed_at).length
+                        } 個已完成事項`
+                      : `${
+                          todo.filter((item) => !item.completed_at).length
+                        } 個待完成事項`}
+                  </span>
+                  <button className="cancel" onClick={handleCleanDone}>
+                    清除已完成項目
+                  </button>
+                </div>
               </div>
-            </div>
-          ) : (
-            <Empty />
-          )}
-        </section>
+            ) : (
+              <Empty />
+            )}
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
