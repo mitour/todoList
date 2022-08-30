@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 function Register() {
   const {
@@ -23,11 +24,29 @@ function Register() {
     const response = await fetch(API, options);
     const responseJson = await response.json();
 
+    const { error, message } = responseJson;
+
     if (response.status === 422) {
-      alert(responseJson.error);
+      Swal.fire({
+        toast: true,
+        position: "bottom-end",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        title: error,
+      });
     }
     if (response.status === 201) {
-      alert(responseJson.message);
+      Swal.fire({
+        toast: true,
+        position: "bottom-end",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        title: message,
+      });
       navigate("/");
     }
   };

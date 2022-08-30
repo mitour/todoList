@@ -14,14 +14,11 @@
 - [x] 必做：確認待完成項目總數 (5 個待完成項目)
 - [x] 必做：清除已完成項目
 - [x] 必做：登入、註冊 API 功能
-- [ ] 必做：表單欄位為空值或非 Email 格式時，需提醒用戶。(例：alert 彈跳、紅色文字顯示、SweetAlert2)
-- [ ] 必做：需處理重複帳號註冊時， API 回傳錯誤時，需提醒用戶。(例：alert 彈跳、紅色文字顯示、SweetAlert2)
+- [x] 必做：表單欄位為空值或非 Email 格式時，需提醒用戶。(例：alert 彈跳、紅色文字顯示、SweetAlert2)
+- [x] 必做：需處理重複帳號註冊時， API 回傳錯誤時，需提醒用戶。(例：alert 彈跳、紅色文字顯示、SweetAlert2)
 
 ## issue/feature
 
-- css 改成 styled-component
-- 重構
-- 重構
-- 重構
-- 元件化然後重構
-- toggle todo 因為重新 fetch 了所以順序會變，可能大概是用更新時間排，也許能用 id 排序
+- [ ] css 改成 styled-component
+- [ ] 重構重構重構元件化然後重構
+- [ ] toggle todo 因為重新 fetch 了所以順序會變，可能大概是用更新時間排，也許能用 id 排序

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function logout() {
   localStorage.clear();
@@ -54,10 +55,17 @@ function InputField({ fetchTodo }) {
     const responseJson = await response.json();
 
     if (response.status === 401) {
-      alert(responseJson.message);
+      Swal.fire({
+        toast: true,
+        position: "bottom-end",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        title: responseJson.message,
+      });
     }
     if (response.status === 201) {
-      alert("新增成功");
       fetchTodo();
     }
   }
@@ -145,7 +153,15 @@ function App() {
     const { error, todos } = responseJson;
 
     if (response.status === 401) {
-      alert(error);
+      Swal.fire({
+        toast: true,
+        position: "bottom-end",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        title: error,
+      });
     }
     if (response.status === 200) {
       setTodo(todos);
@@ -170,10 +186,17 @@ function App() {
     const responseJson = await response.json();
 
     if (response.status === 401) {
-      alert(responseJson.message);
+      Swal.fire({
+        toast: true,
+        position: "bottom-end",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        title: responseJson.message,
+      });
     }
     if (response.status === 200) {
-      alert("切換狀態");
       fetchTodo();
     }
   };
@@ -191,17 +214,43 @@ function App() {
     const response = await fetch(API, options);
     const responseJson = await response.json();
     if (response.status === 401) {
-      alert(responseJson.message);
+      Swal.fire({
+        toast: true,
+        position: "bottom-end",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        title: responseJson.message,
+      });
     }
     if (response.status === 200) {
       fetchTodo();
-      alert(responseJson.message);
+      Swal.fire({
+        toast: true,
+        position: "bottom-end",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        title: responseJson.message,
+      });
     }
   };
 
   const handleCleanDone = () => {
     const isDoneList = todo.filter((item) => item.completed_at);
-    if (!isDoneList.length) alert("nothing to delete");
+    if (!isDoneList.length) {
+      Swal.fire({
+        toast: true,
+        position: "bottom-end",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        title: "目前沒有已完成的代辦事項",
+      });
+    }
     for (const item of isDoneList) {
       fetchDelTodo(item.id);
     }

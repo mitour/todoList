@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 function Login() {
   const {
@@ -23,13 +24,29 @@ function Login() {
     const response = await fetch(API, options);
     const responseJson = await response.json();
 
-    const { error, message, nickname } = responseJson;
+    const { error, nickname } = responseJson;
 
     if (response.status === 401) {
-      alert(error);
+      Swal.fire({
+        toast: true,
+        position: "bottom-end",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        title: error,
+      });
     }
     if (response.status === 200) {
-      alert(message);
+      Swal.fire({
+        toast: true,
+        position: "bottom-end",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        title: `${nickname} 歡迎回來`,
+      });
       navigate("/todolist");
       const authorization = response.headers.get("authorization");
       localStorage.setItem("user", JSON.stringify({ nickname, authorization }));
@@ -68,7 +85,6 @@ function Login() {
                   id="email"
                   type="email"
                   name="email"
-                  value="Admin1@gmail.com"
                   placeholder="請輸入信箱"
                   {...register("email", {
                     required: { value: true, message: "此欄位必填" },
@@ -87,7 +103,6 @@ function Login() {
                   type="password"
                   name="password"
                   placeholder="請輸入密碼"
-                  value="Admin123"
                   {...register("password", {
                     required: { value: true, message: "此欄位必填" },
                     minLength: {
