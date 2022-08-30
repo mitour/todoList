@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
@@ -32,20 +32,40 @@ function NavBar() {
   );
 }
 
-function InputField({ todo, setTodo }) {
+function InputField({ fetchTodo }) {
   const [inputValue, setInputValue] = useState("");
 
   function handleInput(e) {
     setInputValue(e.target.value);
   }
 
+  async function fetchAddTodo(inputValue) {
+    const API = "https://todoo.5xcamp.us/todos";
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: JSON.parse(localStorage.getItem("user")).authorization,
+      },
+      body: JSON.stringify({ todo: { content: inputValue } }),
+    };
+    const response = await fetch(API, options);
+    const responseJson = await response.json();
+
+    if (response.status === 401) {
+      alert(responseJson.message);
+    }
+    if (response.status === 201) {
+      alert("新增成功");
+      fetchTodo();
+    }
+  }
+
   function handleAddTodo(e) {
     e.preventDefault();
     if (!inputValue) return;
-    setTodo([
-      ...todo,
-      { id: Math.random().toString(36), name: inputValue, isDone: false },
-    ]);
+    fetchAddTodo(inputValue);
     setInputValue("");
   }
 
@@ -67,7 +87,7 @@ function InputField({ todo, setTodo }) {
   );
 }
 
-function Todolist({ filterTodo, handleCheckTodo, handleRemoveTodo }) {
+function Todolist({ filterTodo, fetchToggleTodo, fetchDelTodo }) {
   return (
     <ul className="list_items">
       {filterTodo.map((item, index) => {
@@ -77,14 +97,11 @@ function Todolist({ filterTodo, handleCheckTodo, handleRemoveTodo }) {
               type="checkbox"
               name="todolist"
               id={index}
-              defaultChecked={item.isDone}
-              onClick={() => handleCheckTodo(item.id)}
+              defaultChecked={item.completed_at}
+              onClick={() => fetchToggleTodo(item.id)}
             />
-            <label htmlFor={index}>{item.name}</label>
-            <button
-              className="delete"
-              onClick={() => handleRemoveTodo(item.id)}
-            >
+            <label htmlFor={index}>{item.content}</label>
+            <button className="delete" onClick={() => fetchDelTodo(item.id)}>
               <FontAwesomeIcon icon={faTimes} />
             </button>
           </li>
@@ -96,7 +113,7 @@ function Todolist({ filterTodo, handleCheckTodo, handleRemoveTodo }) {
 
 function Empty() {
   return (
-    <div class="empty">
+    <div className="empty">
       <h2>目前尚無待辦事項</h2>
       <img
         src="https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/f70f00178a7f0baa31e9c01634303d8562cfe93a/%E5%85%AC%E7%9B%8A%E9%AB%94%E9%A9%97%E7%87%9F-Todolist/empty%201.png"
@@ -107,45 +124,99 @@ function Empty() {
 }
 
 function App() {
-  const [todo, setTodo] = useState([
-    {
-      id: Math.random().toString(36),
-      name: "把冰箱發霉的檸檬拿去丟",
-      isDone: false,
-    },
-    {
-      id: Math.random().toString(36),
-      name: "打電話叫媽媽匯款給我",
-      isDone: false,
-    },
-    { id: Math.random().toString(36), name: "整理電腦資料夾", isDone: true },
-  ]);
+  const [todo, setTodo] = useState([]);
   const [filterTodo, setFilterTodo] = useState([]);
   const tabs = ["全部", "待完成", "已完成"];
   const [currentTab, setCurrentTab] = useState("全部");
 
-  function handleRemoveTodo(id) {
-    setTodo(todo.filter((item) => item.id !== id));
-  }
-  function handleCheckTodo(id) {
-    let newArr = [...todo];
-    newArr.forEach((item) => {
-      if (item.id === id) item.isDone = !item.isDone;
-    });
-    setTodo(newArr);
-  }
-  function handleCleanDone() {
-    setTodo(todo.filter((item) => !item.isDone));
-  }
+  const fetchTodo = useCallback(async () => {
+    const API = "https://todoo.5xcamp.us/todos";
+    const options = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: JSON.parse(localStorage.getItem("user")).authorization,
+      },
+    };
+    const response = await fetch(API, options);
+    const responseJson = await response.json();
+
+    const { error, todos } = responseJson;
+
+    if (response.status === 401) {
+      alert(error);
+    }
+    if (response.status === 200) {
+      setTodo(todos);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchTodo();
+  }, [fetchTodo]);
+
+  const fetchToggleTodo = async (id) => {
+    const API = `https://todoo.5xcamp.us/todos/${id}/toggle`;
+    const options = {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: JSON.parse(localStorage.getItem("user")).authorization,
+      },
+    };
+    const response = await fetch(API, options);
+    const responseJson = await response.json();
+
+    if (response.status === 401) {
+      alert(responseJson.message);
+    }
+    if (response.status === 200) {
+      alert("切換狀態");
+      fetchTodo();
+    }
+  };
+
+  const fetchDelTodo = async (id) => {
+    const API = `https://todoo.5xcamp.us/todos/${id}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: JSON.parse(localStorage.getItem("user")).authorization,
+      },
+    };
+    const response = await fetch(API, options);
+    const responseJson = await response.json();
+    if (response.status === 401) {
+      alert(responseJson.message);
+    }
+    if (response.status === 200) {
+      fetchTodo();
+      alert(responseJson.message);
+    }
+  };
+
+  const handleCleanDone = () => {
+    const isDoneList = todo.filter((item) => item.completed_at);
+    if (!isDoneList.length) alert("nothing to delete");
+    for (const item of isDoneList) {
+      fetchDelTodo(item.id);
+    }
+  };
+
   function handleChangeTab(id) {
     setCurrentTab(id);
   }
+
   useEffect(() => {
     if (currentTab === "全部") setFilterTodo(todo);
     if (currentTab === "待完成")
-      setFilterTodo(todo.filter((item) => !item.isDone));
+      setFilterTodo(todo.filter((item) => !item.completed_at));
     if (currentTab === "已完成")
-      setFilterTodo(todo.filter((item) => item.isDone));
+      setFilterTodo(todo.filter((item) => item.completed_at));
   }, [todo, currentTab]);
 
   return (
@@ -153,7 +224,7 @@ function App() {
       <div className="container">
         <NavBar />
         <section className="wrap">
-          <InputField todo={todo} setTodo={setTodo} />
+          <InputField fetchTodo={fetchTodo} />
           {todo.length ? (
             <div className="list">
               <ul className="list_header">
@@ -171,17 +242,17 @@ function App() {
               </ul>
               <Todolist
                 filterTodo={filterTodo}
-                handleCheckTodo={handleCheckTodo}
-                handleRemoveTodo={handleRemoveTodo}
+                fetchToggleTodo={fetchToggleTodo}
+                fetchDelTodo={fetchDelTodo}
               />
               <div className="list_footer">
                 <span>
                   {currentTab === "已完成"
                     ? `${
-                        todo.filter((item) => item.isDone).length
+                        todo.filter((item) => item.completed_at).length
                       } 個已完成事項`
                     : `${
-                        todo.filter((item) => !item.isDone).length
+                        todo.filter((item) => !item.completed_at).length
                       } 個待完成事項`}
                 </span>
                 <button className="cancel" onClick={handleCleanDone}>
