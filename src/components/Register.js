@@ -1,6 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 function Register() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
+  const onSubmit = async (data) => {
+    const API = "https://todoo.5xcamp.us/users";
+    const { email, nickname, password } = data;
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user: { email, nickname, password } }),
+    };
+    const response = await fetch(API, options);
+    const responseJson = await response.json();
+
+    if (response.status === 422) {
+      alert(responseJson.error);
+    }
+    if (response.status === 201) {
+      alert(responseJson.message);
+      navigate("/");
+    }
+  };
   return (
     <div className="form">
       <div className="container">
@@ -19,28 +49,77 @@ function Register() {
           />
         </section>
         <section className="wrap">
-          <form action="#">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <h2>註冊帳號</h2>
             <ul className="list">
               <li className="list_item">
                 <h3>Email</h3>
-                <input id="email" type="email" placeholder="請輸入 Email" />
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="請輸入 Email"
+                  {...register("email", {
+                    required: { value: true, message: "此欄位必填" },
+                    pattern: {
+                      value: new RegExp(/^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g),
+                      message: "信箱格式不符",
+                    },
+                  })}
+                />
+                <h3 className="alert">{errors.email?.message}</h3>
               </li>
               <li className="list_item">
                 <h3>您的暱稱</h3>
-                <input id="username" type="text" placeholder="請輸入您的暱稱" />
+                <input
+                  id="nickname"
+                  type="text"
+                  name="nickname"
+                  placeholder="請輸入您的暱稱"
+                  {...register("nickname", {
+                    required: { value: true, message: "此欄位必填" },
+                  })}
+                />
+                <h3 className="alert">{errors.nickname?.message}</h3>
               </li>
               <li className="list_item">
                 <h3>密碼</h3>
-                <input id="pwd" type="password" placeholder="請輸入密碼" />
+                <input
+                  id="password"
+                  type="password"
+                  name="password"
+                  placeholder="請輸入密碼"
+                  {...register("password", {
+                    required: { value: true, message: "此欄位必填" },
+                    minLength: {
+                      value: 8,
+                      message: "密碼長度至少應該設定 8 碼以上",
+                    },
+                    pattern: {
+                      value: new RegExp(
+                        "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9_]{8,}"
+                      ),
+                      message:
+                        "密碼格式不符：至少包含一位大寫英文字母、一位小寫英文字母及一位數字",
+                    },
+                  })}
+                />
+                <h3 className="alert">{errors.password?.message}</h3>
               </li>
               <li className="list_item">
                 <h3>再次輸入密碼</h3>
                 <input
-                  id="pwd_again"
+                  id="confirmPassword"
                   type="password"
-                  placeholder="再次輸入密碼"
+                  name="confirmPassword"
+                  placeholder="請再次輸入密碼"
+                  {...register("confirmPassword", {
+                    required: { value: true, message: "此欄位必填" },
+                    validate: (value) =>
+                      value === watch("password") || "兩次密碼不相符",
+                  })}
                 />
+                <h3 className="alert">{errors.confirmPassword?.message}</h3>
               </li>
             </ul>
             <input className="btn" type="submit" value="註冊帳號" />
