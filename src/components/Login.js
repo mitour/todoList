@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
@@ -10,6 +10,7 @@ function Login() {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const onSubmit = async (data) => {
     const API = "https://todoo.5xcamp.us/users/sign_in";
@@ -86,6 +87,7 @@ function Login() {
                   type="email"
                   name="email"
                   placeholder="請輸入信箱"
+                  value={state?.email}
                   {...register("email", {
                     required: { value: true, message: "此欄位必填" },
                     pattern: {

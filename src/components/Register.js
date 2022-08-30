@@ -47,7 +47,7 @@ function Register() {
         timerProgressBar: true,
         title: message,
       });
-      navigate("/");
+      navigate("/", { state: { email: email } });
     }
   };
   return (
