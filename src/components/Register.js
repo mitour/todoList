@@ -111,15 +111,8 @@ function Register() {
                   {...register("password", {
                     required: { value: true, message: "此欄位必填" },
                     minLength: {
-                      value: 8,
-                      message: "密碼長度至少應該設定 8 碼以上",
-                    },
-                    pattern: {
-                      value: new RegExp(
-                        "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9_]{8,}"
-                      ),
-                      message:
-                        "密碼格式不符：至少包含一位大寫英文字母、一位小寫英文字母及一位數字",
+                      value: 6,
+                      message: "密碼長度至少應該設定 6 碼以上",
                     },
                   })}
                 />
